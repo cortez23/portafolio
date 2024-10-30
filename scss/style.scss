@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing:border-box;
+}
+// MEDIA QUERIES
+@mixin movil {
+    @media only screen and (width <= 481px) {
+      @content;
+    }
+  } 
+@mixin tablet {
+    @media only screen and (width <= 768px) {
+      @content;
+    }
+  }  
+@mixin desktop {
+    @media only screen and (width <= 1024px) {
+      @content;
+    }
+  }  
+@mixin large {
+    @media only screen and (width <= 1200px) {
+      @content;
+    }
+  }
+
+
+
+// MIXIN
+
+@mixin title_name{
+    font-size: 24px;
+    font-weight: bold;
+}
+.header{
+    width: 80%;
+    margin: 10px auto 20px auto;
+}
+
+
+body{
+box-sizing:content-box;
+font-family: Montserrat;
+}
+
+.header_pag{
+    width: 100%;
+    height: 90px;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    position: fixed;
+    z-index: 99;
+    .container_header{
+        width: 80%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include tablet{
+            width: 100%;
+        }
+        .logo{
+            height: auto;
+            text-align: center;
+            @include large{
+                display: flex;
+                justify-items: center;
+            }
+            @include tablet{
+                width: 76px;
+            }
+            @include movil{
+                width: 116px;
+            }
+            img.logo-movil{
+                width: 65%;
+                min-width: 77px;
+                height: auto;
+                display: none;
+                @include large{
+                    display: block;
+                }
+                @include movil{
+                    min-width: 40px;
+                }
+            }
+            img.logo-desk{
+                // width: 60%;
+                width: 30%;
+                height: auto;
+                max-height: 205px;
+                min-width: 170px;
+                @include large{
+                    display: none;
+                }
+            }
+        }
+    // MENU
+        nav.menu{
+            height: auto;
+            ul.menu-link{
+                display: flex;
+                flex-direction: row;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                @include movil{
+                    position:absolute;
+                    top: 90px;
+                    right:0;
+                    width: 100%;
+                    height: 0;
+                    overflow: hidden;
+                    flex-direction: column;
+                    background-color: hsla(0, 0%, 0%, 0.7);
+                    text-align: center;
+                    transition: height 0.5s ease;
+
+                }
+                li {
+                    margin: 0 15px; // Espaciado entre elementos del menú
+                    @include movil{
+                        margin: 0;
+                        padding: 20px 0;
+                        width: 100%;
+                    }
+                    a {
+                        text-decoration: none; // Sin subrayado en los enlaces
+                        color: #fff; // Color del texto
+                        font-weight: bold; // Texto en negrita
+                        transition: background-color 0.3s ease;
+                        @include movil{
+                            width: 100%;
+                            padding: 10px 20px;
+                        }
+                        &:hover {
+                            color: #007bff; // Color al pasar el mouse
+                        }
+                    }
+                }
+            }
+            .menu-icon{
+                display: none;
+                flex-direction: column;
+                cursor: pointer;
+                margin-left: auto;
+                position: relative;
+                z-index: 1;
+                right: 100%;
+                @include movil{
+                    display: flex;
+                }
+                .line{
+                    width: 30px;
+                    height: 3px;
+                    background-color: #fff;
+                    margin: 5px 0;
+                    transition: all 0.3s ease;
+                }
+            }
+            #menu-toggle{
+                display: none;
+            }
+        }
+    }
+}
+@media (max-width: 481px) {
+    #menu-toggle:checked + .menu-icon + .menu-link {
+        height: 100vh;
+    }
+    #menu-toggle:checked + .menu-icon .line:nth-child(1){
+        transform: rotate(45deg) translate(15px, 3px);
+    }
+    #menu-toggle:checked + .menu-icon .line:nth-child(2){
+        transform: scale(0);
+    }
+    #menu-toggle:checked + .menu-icon .line:nth-child(3){
+        transform: rotate(-45deg) translate(15px, -4px);
+    }
+}
+
+// CAJA BOX 
+.box{
+    width: 80%;
+    height: auto;
+    margin: auto;
+    padding-bottom: 100px;
+    @include desktop{
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    @include tablet{
+        width: 100%;
+    }
+}
+.container{
+    .intro{
+        background-image: url(/img/fondos/fondo01.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        .intro_logo{
+            width: 100%;
+            height: auto;
+            display: flex;
+            margin: auto;
+            max-width: 730px;
+            // min-width: 600px;
+        }
+        .intro_rr-ss{
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 15px;
+            li{
+                list-style: none;
+                .icon{
+                    width: 50px;
+                    height: 50px;
+                    color: #fff;
+                }
+                .icon:hover{
+                    color: rgb(237, 193, 36);
+                }
+            }
+        }
+    }
+    // SOBRE MI
+    .sobre-mi{
+        min-height: 70vh;
+        background-color: #257180;
+        display: flex;
+        padding-top: 90px;
+        padding-bottom: 70px;
+        @include tablet{
+            padding: 90px 15px 70px;
+        }
+        .box.info{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            @include tablet{
+                flex-direction: column;
+            }
+            img.sobre-mi_perfil{
+                width: 330px;
+                height: auto;
+                display: flex;
+                border-radius: 100%;
+                @include movil{
+                    width: 270px;
+                }
+            }
+            .sobre_mi_info{
+                display: flex;
+                flex-direction: column;
+                margin-left: 8%;
+                width: 100%;
+                height: auto;
+                @include tablet{
+                    margin-left: 0%;
+                }
+                .sobre-mi_title{
+                    font-size: 2rem;
+                    margin-bottom: 20px;
+                    color: #fff;
+                }
+                .sobre-mi_text{
+                    font-size: 1.2rem;
+                    margin-bottom: 20px;
+                    color: #fff;
+                    @include movil{
+                        font-size: 1rem;
+                    }
+                }
+                .sobre-mi_cv{
+                    background-color: #FADFA1;
+                    width: 15%;
+                    height: auto;
+                    padding: 5px 6px;
+                    text-align: center;
+                    text-decoration: none;
+                    font-weight: bold;
+                    border-radius: 20px;
+                    color: #C96868;
+                }
+            }
+        }
+    }
+
+    // PORTAFOLIO
+    .portafolio{
+        width: 100%;
+        height: auto;
+        background-color: #F2E5BF;
+        padding-top: 90px;
+        // galeria  efecto
+        .header.encabezado_portafolio{
+            .portafolio_title{
+                padding: 30px 0;
+            }
+        }
+        .portafolio_gallery{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-content: baseline;
+            height: auto;
+            // align-items: center;
+            // height: 100vh;
+
+            figure{
+                position: relative;
+                height: 250px;
+                width: 350px;
+                overflow: hidden;
+                border-radius: 6px;
+                margin: 5px 5px;
+                cursor: pointer;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    transition: all 500ms ease-out ;                    
+                }
+                .capa{
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(11,103,123,0.6);
+                    opacity: 0;
+                    transition: all 500ms ease-out ; 
+                    text-align: center;
+                    visibility: hidden;
+                    h3{
+                        color: #fff;
+                        font-weight: 400;
+                        margin-bottom: 120px;
+                        transition: all 500ms ease-out ; 
+                        margin-top: 30px;
+                    }
+                    p{
+                        color: #fff;
+                        font-size: 15px;
+                        line-height: 1.5;
+                        width: 100%;
+                        max-width: 220px;
+                        margin: auto;
+                    }
+                }
+            }
+            figure:hover > img{
+                transform: scale(1.3);
+            }
+            figure:hover > .capa{
+                opacity: 1;
+                visibility: visible;
+                h3{
+                    margin-top: 70px;
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+    // ESTUDIOS
+    .estudios{
+        height: 60vh;
+        background-color: #C96868;
+        padding: 90px 0 70px 0;
+        @include tablet{
+            height: auto;
+            padding: 90px 15px 70px ;
+        }
+        .header.encabezado_estudios{
+            width: 80%;
+            height: auto;
+            margin:10px auto 20px;
+            .estudios_title{
+                padding: 30px 0;
+            }
+        }
+        .box.estudos_box{
+            display: flex;
+            flex-direction: row;
+            @include tablet{
+                flex-direction: column;
+                align-items: center;
+            }
+            figure.estudos_info{
+                width: 33%;
+                height: auto;
+                padding: 10px 30px;
+                @include tablet{
+                    width: 70%;
+                    padding: 10px 15px;
+                }
+                .img_estudios{
+                    width: 100%;
+                    height: auto;
+                    padding-bottom: 20px;
+                    max-width: 700px;
+                    min-width: 200px;
+                }
+            }
+        }
+    }
+}
+
+footer.piedepag{
+    padding-top: 90px;
+    .box{
+        display: flex;
+        flex-direction: row;
+        @include movil{
+            flex-direction: column;
+            align-items: center;
+        }
+        .footer_rr-ss{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            padding: 0 30px;
+            @include movil{
+                width: 100%;
+            }
+            .footer_title_rr-ss{
+                padding-bottom: 10px;
+                font-size: 18px;
+            }
+            .footer_text{
+                margin-bottom: 20px;
+            }        
+            ul{
+                display: flex;
+                list-style: none;
+                gap: 10%;
+                margin-top: 10%;
+                @include movil{
+                    margin-bottom: 10%;
+                    justify-content: space-between;
+                }
+                li{
+                    .bi{
+                        width: 30px;
+                        height: auto;
+                        @include movil{
+                            width: 8vw;
+                        }
+                    }
+                }
+            }
+        }
+        .fonrmulario_pie{
+            width: 50%;
+            @include movil{
+                width: 100%;
+            }
+            .form{
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .campo{
+                    width: 100%;
+                    max-width: 440px;
+                    height: 5vh;
+                    margin-bottom: 15px;
+                }
+                .text_msn{
+                    // min-width: 60%;
+                    width: 100%;
+                    max-width: 440px;
+                    min-height: 20vh;
+                    max-height: 20vh;
+                    margin-bottom: 15px;
+                }
+                .btn-enviar {
+                    width: 180px;
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    background-color: orange;
+                    color: #fff;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+    .pie_de_pag{
+        text-align: center;
+        font-size: 14px;
+        padding: 20px 0;
+        background-color: #000;
+        color: #FADFA1;
+    }
+}
+
+// @media (width <= 1200px){
+//     .logo{
+//         display: flex;
+//         justify-items: center;
+//         img.logo-movil{
+//             display: block !important;
+//             width: 65%;
+//         }
+//         img.logo-desk{
+//             display: none;
+//         }
+//     }   
+// }
